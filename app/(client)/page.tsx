@@ -1,3 +1,4 @@
+import ExploreCat from "@/components/home/explore-cat";
 import { Header } from "@/components/home/header";
 import Hero from "@/components/home/hero";
 import { HeroCarousel } from "@/components/home/hero-carousel";
@@ -7,13 +8,14 @@ import React from "react";
 const page = () => {
   return (
     <div className="flex flex-col ">
-      {/* <Header /> */}
+      <Header />
 
       <div className="flex flex-col gap-10 md:p-0">
         {/* <Hero /> */}
         <HeroCarousel />
       </div>
       <RecentBlogs />
+      <ExploreCat />
       {/* <Review /> */}
       {/* <Footer /> */}
     </div>

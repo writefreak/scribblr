@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
+import BlogSearch from "../shared/blog-search";
 
 export function HeroCarousel() {
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
@@ -56,12 +57,12 @@ export function HeroCarousel() {
                 </motion.h1>
                 <div className="flex items-center gap-3 font-space-grotesk">
                   {story.category && (
-                    <Badge className="text-sm tracking-wide text-white bg-white/20 backdrop-blur-xl px-4 py-2 flex items-center">
+                    <Badge className="text-sm tracking-wide text-white bg-white/20 border-gray-500 border backdrop-blur-xl px-4 py-2 flex items-center">
                       {story.category}
                     </Badge>
                   )}
                   <div>
-                    <Button className="rounded-full bg-white/20 backdrop-blur-xl px-4 flex items-center justify-between">
+                    <Button className="rounded-full bg-white/20 border-gray-500 border backdrop-blur-xl px-4 flex items-center justify-between">
                       Read More
                       <div className="">
                         <ArrowUpRight />
@@ -69,6 +70,7 @@ export function HeroCarousel() {
                     </Button>
                   </div>
                 </div>
+                <BlogSearch />
               </div>
             </CarouselItem>
           ))}

@@ -1,6 +1,7 @@
 // import Footer from "@/components/home/footer";
 // import { Navbar } from "@/components/shared/navbar";
 import { Header } from "@/components/home/header";
+import Footer from "@/components/shared/footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,10 +18,10 @@ export default function ClientLayout({
     <>
       <div>
         <div className="flex items-center justify-center">
-          <Header />
+          {/* <Header /> */}
         </div>
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );

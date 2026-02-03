@@ -42,7 +42,7 @@ export function Header({ className }: Props) {
             </h2>
             {/*  */}
 
-            <div className=" space-x-2 bg-white/20 backdrop-blur-md p-1 rounded-full not-md:hidden">
+            <div className=" space-x-2 bg-white/20 border-gray-500 border backdrop-blur-md p-1 rounded-full not-md:hidden">
               {navigations.map((nav) => (
                 <Link href={nav.url} key={nav.title}>
                   <Button

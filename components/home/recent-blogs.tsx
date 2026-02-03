@@ -63,6 +63,7 @@ const RecentBlogs = () => {
                 className="shrink-0 w-full sm:w-[48%] lg:w-[28%]"
               >
                 <BlogCards
+                  id={t.title}
                   title={t.title}
                   desc={t.description}
                   image={t.image}

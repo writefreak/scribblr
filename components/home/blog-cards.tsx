@@ -7,6 +7,7 @@ import { Heart } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
+  id: string;
   category: string;
   title: string;
   desc: string;
@@ -14,11 +15,11 @@ interface Props {
   image: string;
 }
 
-const BlogCards = ({ category, title, desc, likes, image }: Props) => {
+const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Link href={"#"}>
+    <Link href={`/blogs/${id}`}>
       <Card className="p-0 rounded-4xl">
         <div className="h-72 md:h-56">
           <img
