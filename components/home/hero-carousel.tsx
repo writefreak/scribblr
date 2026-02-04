@@ -70,7 +70,9 @@ export function HeroCarousel() {
                     </Button>
                   </div>
                 </div>
-                <BlogSearch />
+                <React.Suspense fallback={<div>Loading search...</div>}>
+                  <BlogSearch />
+                </React.Suspense>
               </div>
             </CarouselItem>
           ))}
