@@ -13,7 +13,7 @@ const ExploreCat = () => {
         <p className="font-bold text-2xl md:text-3xl font-space-grotesk pt-15">
           Explore By Popular Categories
         </p>
-        <div className="hidden md:grid sm:grid-cols-2 gap-5 pt-5">
+        <div className="hidden md:grid md:grid-cols-4 gap-5 pt-5">
           {category.map((c) => (
             <Card key={c.id} className="p-0">
               <div className="grid grid-cols-2 gap-5">
