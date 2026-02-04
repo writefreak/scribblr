@@ -19,9 +19,9 @@ const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Link href={`/blogs/${id}`}>
-      <Card className="p-0 rounded-4xl">
-        <div className="h-72 md:h-56">
+    <Link href={`/blogs/${id}`} className="">
+      <Card className="p-0 rounded-4xl shadow-md">
+        <div className="h-56 md:h-56">
           <img
             src={image}
             alt=""
@@ -54,10 +54,10 @@ const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
           </div>
 
           <div className="space-y-4 pb-6">
-            <h2 className="font-space-grotesk text-xl font-bold w-72 line-clamp-2">
+            <h2 className="font-space-grotesk md:text-xl font-bold md:w-72 line-clamp-2">
               {title}
             </h2>
-            <p className="text-gray-600 text-xs line-clamp-3 font-montserrat">
+            <p className="text-gray-600 text-xs line-clamp-2 font-montserrat">
               {desc}
             </p>
           </div>

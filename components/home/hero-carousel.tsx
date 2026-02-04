@@ -33,7 +33,7 @@ export function HeroCarousel() {
           {trendingStories.map((story, i) => (
             <CarouselItem
               key={i}
-              className="relative flex h-100 md:h-screen items-center"
+              className="relative flex h-[460px] md:h-screen items-center"
             >
               {/* background image */}
               <img
@@ -55,24 +55,26 @@ export function HeroCarousel() {
                 >
                   {story.title}
                 </motion.h1>
-                <div className="flex items-center gap-3 font-space-grotesk">
-                  {story.category && (
-                    <Badge className="text-sm tracking-wide text-white bg-white/20 border-gray-500 border backdrop-blur-xl px-4 py-2 flex items-center">
-                      {story.category}
-                    </Badge>
-                  )}
-                  <div>
-                    <Button className="rounded-full bg-white/20 border-gray-500 border backdrop-blur-xl px-4 flex items-center justify-between">
-                      Read More
-                      <div className="">
-                        <ArrowUpRight />
-                      </div>
-                    </Button>
+                <div className="flex flex-col pt-5 md:gap-4">
+                  <div className="flex items-center gap-2 font-space-grotesk">
+                    {story.category && (
+                      <Badge className="text-sm tracking-wide text-white bg-white/20 border-gray-500 border backdrop-blur-xl px-4 py-2 flex items-center">
+                        {story.category}
+                      </Badge>
+                    )}
+                    <div>
+                      <Button className="rounded-full bg-white/20 border-gray-500 border backdrop-blur-xl px-4 flex items-center justify-between">
+                        Read More
+                        <div className="">
+                          <ArrowUpRight />
+                        </div>
+                      </Button>
+                    </div>
                   </div>
+                  <React.Suspense fallback={<div>Loading search...</div>}>
+                    <BlogSearch />
+                  </React.Suspense>
                 </div>
-                <React.Suspense fallback={<div>Loading search...</div>}>
-                  <BlogSearch />
-                </React.Suspense>
               </div>
             </CarouselItem>
           ))}

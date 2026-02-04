@@ -8,41 +8,54 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const RecentBlogs = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
 
+  // Detect mobile
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Update start/end states for mobile buttons
   const checkScroll = () => {
     if (!scrollRef.current) return;
-
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-
-    setAtStart(scrollLeft === 0);
+    setAtStart(scrollLeft <= 0);
     setAtEnd(scrollLeft + clientWidth >= scrollWidth - 1);
   };
 
   useEffect(() => {
-    checkScroll();
+    if (!isMobile) return;
     const el = scrollRef.current;
     if (!el) return;
 
     el.addEventListener("scroll", checkScroll);
+    checkScroll(); // initial check
     return () => el.removeEventListener("scroll", checkScroll);
-  }, []);
+  }, [isMobile]);
 
+  // Mobile scroll buttons
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-
     const container = scrollRef.current;
     const card = container.querySelector<HTMLElement>("[data-card]");
     if (!card) return;
 
     const cardWidth = card.offsetWidth + 16;
-
     container.scrollBy({
       left: direction === "right" ? cardWidth : -cardWidth,
       behavior: "smooth",
     });
   };
+
+  // Stories array (no auto-scroll duplication on mobile)
+  const stories = isMobile
+    ? trendingStories
+    : [...trendingStories, ...trendingStories, ...trendingStories];
 
   return (
     <div className="pt-15">
@@ -54,13 +67,13 @@ const RecentBlogs = () => {
 
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
+            className="flex gap-4 overflow-x-auto scrollbar-hide pb-5"
           >
-            {trendingStories.map((t, i) => (
+            {stories.map((t, i) => (
               <div
                 key={i}
                 data-card
-                className="shrink-0 w-full sm:w-[48%] lg:w-[28%]"
+                className="shrink-0 w-[80%] sm:w-[48%] md:w-[35%] lg:w-[33%] xl:w-[28%]"
               >
                 <BlogCards
                   id={t.title}
@@ -74,23 +87,26 @@ const RecentBlogs = () => {
             ))}
           </div>
 
-          <div className="flex gap-3 justify-end">
-            <Button
-              onClick={() => scroll("left")}
-              disabled={atStart}
-              className="h-10 w-10 border bg-[#377389] rounded-full disabled:opacity-40"
-            >
-              <ChevronLeft />
-            </Button>
+          {/* Mobile buttons */}
+          {isMobile && (
+            <div className="flex gap-3 justify-end">
+              <Button
+                onClick={() => scroll("left")}
+                disabled={atStart}
+                className="h-10 w-10 border bg-[#377389] rounded-full disabled:opacity-40"
+              >
+                <ChevronLeft />
+              </Button>
 
-            <Button
-              onClick={() => scroll("right")}
-              disabled={atEnd}
-              className="h-10 w-10 border bg-[#377389] rounded-full disabled:opacity-40"
-            >
-              <ChevronRight />
-            </Button>
-          </div>
+              <Button
+                onClick={() => scroll("right")}
+                disabled={atEnd}
+                className="h-10 w-10 border bg-[#377389] rounded-full disabled:opacity-40"
+              >
+                <ChevronRight />
+              </Button>
+            </div>
+          )}
         </div>
       </Wrapper>
     </div>
