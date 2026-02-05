@@ -65,7 +65,7 @@ const TrendingStories = () => {
         {category.map((c) => (
           <Card
             key={c.id}
-            className="relative w-60 md:h-56 shrink-0 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md border border-gray-600"
+            className="relative w-56 md:w-60 md:h-56 shrink-0 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md border border-gray-600"
           >
             <img
               src={c.img}

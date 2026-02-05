@@ -19,7 +19,7 @@ const breakingNews = [
   },
   {
     title: "Government Announces New Digital Policy for Startups",
-    image: "/home/img5.jpg",
+    image: "/home/img1.jpg",
     link: "/news/digital-policy",
     desc: `The government unveils a new digital policy aimed at 
     supporting startups, focusing on innovation funding, data protection, 
@@ -27,7 +27,7 @@ const breakingNews = [
   },
   {
     title: "Tech Community Divided Over Latest AI Regulations",
-    image: "/home/img5.jpg",
+    image: "/home/img2.jpg",
     link: "/news/ai-regulations",
     desc: `Developers, companies, and researchers clash over 
     newly introduced AI regulations, weighing ethical safeguards
@@ -35,7 +35,7 @@ const breakingNews = [
   },
   {
     title: "Major Tech Firms Report Slower Growth Amid Global Uncertainty",
-    image: "/home/img5.jpg",
+    image: "/home/img3.jpg",
     link: "/news/tech-growth-slowdown",
     desc: `Leading technology companies reveal slower revenue 
     growth as economic uncertainty, rising costs, and market
@@ -43,7 +43,7 @@ const breakingNews = [
   },
   {
     title: "Cybersecurity Experts Warn of Increase in Phishing Attacks",
-    image: "/home/img5.jpg",
+    image: "/home/img4.jpg",
     link: "/news/phishing-alert",
     desc: `Security analysts raise concerns over a 
     sharp rise in phishing attempts, urging users and businesses
@@ -102,42 +102,44 @@ function EditorsPick() {
             Editor's Pick
           </h2>
         </div>
-        <Card className="w-full shadow-none overflow-hidden p-0 md:hidden">
-          <div
-            className="flex"
-            style={{
-              // Toggle transition based on state
-              transition: isTransitioning
-                ? "transform 600ms ease-in-out"
-                : "none",
-              transform: `translateX(-${safeIndex * 100}%)`,
-            }}
-            onTransitionEnd={handleTransitionEnd}
-          >
-            {extendedNews.map((news, i) => (
-              <div key={i} className="min-w-full flex items-center gap-4">
-                <img
-                  src={news.image}
-                  alt="breaking news"
-                  className="w-20 h-20 md:w-50 md:h-50 object-cover rounded-l-md shrink-0"
-                />
+        <Link href={"#"}>
+          <Card className="w-full shadow-none overflow-hidden p-0 md:hidden">
+            <div
+              className="flex"
+              style={{
+                // Toggle transition based on state
+                transition: isTransitioning
+                  ? "transform 600ms ease-in-out"
+                  : "none",
+                transform: `translateX(-${safeIndex * 100}%)`,
+              }}
+              onTransitionEnd={handleTransitionEnd}
+            >
+              {extendedNews.map((news, i) => (
+                <div key={i} className="min-w-full flex items-center gap-4">
+                  <img
+                    src={news.image}
+                    alt="breaking news"
+                    className="w-20 h-20 md:w-50 md:h-50 object-cover rounded-l-md shrink-0"
+                  />
 
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-space-grotesk text-sm w-60 font-medium leading-snug">
-                    {news.title}
-                  </h3>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="font-space-grotesk text-sm w-60 font-medium leading-snug">
+                      {news.title}
+                    </h3>
 
-                  <Link
+                    {/* <Link
                     href={news.link}
                     className="font-montserrat text-xs underline text-[#377389]"
                   >
                     Click to Read more
-                  </Link>
+                  </Link> */}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Card>
+              ))}
+            </div>
+          </Card>
+        </Link>
       </Wrapper>
     </div>
   );

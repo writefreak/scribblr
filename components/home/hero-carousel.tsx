@@ -33,7 +33,7 @@ export function HeroCarousel() {
           {trendingStories.map((story, i) => (
             <CarouselItem
               key={i}
-              className="relative flex h-[460px] md:h-screen items-center"
+              className="relative flex h-115 md:h-screen items-center"
             >
               {/* background image */}
               <img
