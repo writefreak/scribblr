@@ -13,7 +13,7 @@ interface Props {
 const EditorStrip = ({ image, title, desc, link }: Props) => {
   return (
     <div>
-      <Card className="overflow-hidden p-0 hover:bg-[#377389]/5">
+      <Card className="overflow-hidden p-0 hover:bg-[#377389]/5 shadow-none">
         <div className="flex">
           <div className="min-w-full flex items-center gap-4">
             <img

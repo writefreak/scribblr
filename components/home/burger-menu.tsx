@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import {
+  Briefcase,
   BriefcaseBusiness,
   CircleHelp,
   House,
   LibraryBig,
   Menu,
+  Phone,
   Star,
 } from "lucide-react";
 import Link from "next/link";
@@ -27,7 +29,13 @@ import Link from "next/link";
 interface props {
   className?: string;
 }
-
+const navigations = [
+  { title: "Home", url: "/" },
+  { title: "Blogs", url: "/blogs" },
+  { title: "About", url: "/about" },
+  { title: "Contact", url: "/contact" },
+  { title: "Reviews", url: "/reviews" },
+];
 export function BurgerMenu({ className }: props) {
   return (
     <Sheet>
@@ -51,7 +59,7 @@ export function BurgerMenu({ className }: props) {
           {links.map((l) => (
             <div key={l.id} className="flex items-center gap-2 pb-4">
               <div>{l.icon}</div>
-              <Link key={l.id} href={l.desc} className="text-sm font-semibold">
+              <Link key={l.id} href={l.url} className="text-sm font-semibold">
                 {l.desc}
               </Link>
             </div>
@@ -65,26 +73,31 @@ const links = [
   {
     id: 1,
     desc: "Home",
-    icon: <House className="h-5 text-[#377389] w-5 " />,
+    icon: <House className="h-5 text-[#377389] w-5" />,
+    url: "/",
   },
   {
     id: 2,
-    desc: "About us",
+    desc: "Blogs",
+    url: "/blogs",
     icon: <LibraryBig className="h-5 text-[#377389] w-5" />,
   },
   {
     id: 3,
-    desc: "Services",
+    desc: "Contact",
+    url: "/contact",
+    icon: <Phone className="h-5 text-[#377389] w-5" />,
+  },
+  {
+    id: 5,
+    desc: "About",
+    url: "/about",
     icon: <BriefcaseBusiness className="h-5 text-[#377389] w-5" />,
   },
   {
     id: 4,
     desc: "Reviews",
+    url: "/reviews",
     icon: <Star className="h-5 text-[#377389] w-5 " />,
-  },
-  {
-    id: 5,
-    desc: "FAQs",
-    icon: <CircleHelp className="h-5 text-[#377389] w-5" />,
   },
 ];

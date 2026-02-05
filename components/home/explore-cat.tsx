@@ -36,7 +36,7 @@ const ExploreCat = () => {
                 <h2 className="font-space-grotesk font-semibold text-lg md:text-xl">
                   {c.title}
                 </h2>
-                <p className="text-xs text-gray-200 md:text-sm line-clamp-3 md:line-clamp mt-1">
+                <p className="text-xs font-montserrat text-gray-200 md:text-sm line-clamp-3 md:line-clamp mt-1">
                   {c.slug}
                 </p>
               </div>

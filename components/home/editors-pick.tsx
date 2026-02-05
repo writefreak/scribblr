@@ -102,7 +102,7 @@ function EditorsPick() {
             Editor's Pick
           </h2>
         </div>
-        <Card className="w-full bg-[#377389] overflow-hidden p-0 md:hidden">
+        <Card className="w-full shadow-none overflow-hidden p-0 md:hidden">
           <div
             className="flex"
             style={{
@@ -119,18 +119,19 @@ function EditorsPick() {
                 <img
                   src={news.image}
                   alt="breaking news"
-                  className="w-20 h-20 md:w-50 md:h-50 object-cover rounded-md shrink-0"
+                  className="w-20 h-20 md:w-50 md:h-50 object-cover rounded-l-md shrink-0"
                 />
 
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-white font-space-grotesk text-sm md:text-lg font-medium leading-snug">
+                  <h3 className="font-space-grotesk text-sm w-60 font-medium leading-snug">
                     {news.title}
                   </h3>
 
-                  <Link href={news.link}>
-                    <Button className="h-7 w-fit px-3 text-xs font-space-grotesk bg-transparent border border-[#377389]/40 text-white hover:bg-[#377389]/40 transition">
-                      Read more
-                    </Button>
+                  <Link
+                    href={news.link}
+                    className="font-montserrat text-xs underline text-[#377389]"
+                  >
+                    Click to Read more
                   </Link>
                 </div>
               </div>
