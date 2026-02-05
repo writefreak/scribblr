@@ -1,3 +1,6 @@
+import EditorWrapper from "@/components/home/editor-wrapper";
+import EditorsPick from "@/components/home/editors-pick";
+import CallToAction from "@/components/home/editors-pick";
 import ExploreCat from "@/components/home/explore-cat";
 import { Header } from "@/components/home/header";
 import Hero from "@/components/home/hero";
@@ -16,6 +19,8 @@ const page = () => {
       </div>
       <RecentBlogs />
       <ExploreCat />
+      <EditorsPick />
+      <EditorWrapper />
       {/* <Review /> */}
       {/* <Footer /> */}
     </div>

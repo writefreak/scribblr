@@ -8,9 +8,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const RecentBlogs = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
   const [isMobile, setIsMobile] = useState(false);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Detect mobile
   useEffect(() => {
@@ -20,10 +23,31 @@ const RecentBlogs = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Update start/end states for mobile buttons
+  // Desktop auto-scroll
+  useEffect(() => {
+    if (isMobile || isPaused) return;
+
+    const el = scrollRef.current;
+    if (!el) return;
+
+    intervalRef.current = setInterval(() => {
+      el.scrollLeft += 0.4;
+
+      if (el.scrollLeft >= el.scrollWidth / 3) {
+        el.scrollLeft = 0;
+      }
+    }, 20);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isMobile, isPaused]);
+
+  // Mobile start/end detection
   const checkScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+
     setAtStart(scrollLeft <= 0);
     setAtEnd(scrollLeft + clientWidth >= scrollWidth - 1);
   };
@@ -34,11 +58,12 @@ const RecentBlogs = () => {
     if (!el) return;
 
     el.addEventListener("scroll", checkScroll);
-    checkScroll(); // initial check
+    checkScroll();
+
     return () => el.removeEventListener("scroll", checkScroll);
   }, [isMobile]);
 
-  // Mobile scroll buttons
+  // Mobile button scroll
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
     const container = scrollRef.current;
@@ -46,13 +71,14 @@ const RecentBlogs = () => {
     if (!card) return;
 
     const cardWidth = card.offsetWidth + 16;
+
     container.scrollBy({
       left: direction === "right" ? cardWidth : -cardWidth,
       behavior: "smooth",
     });
   };
 
-  // Stories array (no auto-scroll duplication on mobile)
+  // Stories
   const stories = isMobile
     ? trendingStories
     : [...trendingStories, ...trendingStories, ...trendingStories];
@@ -67,13 +93,15 @@ const RecentBlogs = () => {
 
           <div
             ref={scrollRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
             className="flex gap-4 overflow-x-auto scrollbar-hide pb-5"
           >
             {stories.map((t, i) => (
               <div
                 key={i}
                 data-card
-                className="shrink-0 w-[80%] sm:w-[48%] md:w-[35%] lg:w-[33%] xl:w-[28%]"
+                className="shrink-0 w-[80%] sm:w-[48%] md:w-[35%] lg:w-[33%] xl:w-[26%]"
               >
                 <BlogCards
                   id={t.title}

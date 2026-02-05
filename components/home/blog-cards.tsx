@@ -20,12 +20,12 @@ const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
 
   return (
     <Link href={`/blogs/${id}`} className="">
-      <Card className="p-0 rounded-4xl shadow-md">
+      <Card className="p-0 rounded-2xl shadow-md">
         <div className="h-56 md:h-56">
           <img
             src={image}
             alt=""
-            className="h-full w-full object-cover rounded-t-4xl"
+            className="h-full w-full object-cover rounded-t-2xl"
           />
         </div>
 
@@ -54,7 +54,7 @@ const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
           </div>
 
           <div className="space-y-4 pb-6">
-            <h2 className="font-space-grotesk md:text-xl font-bold md:w-72 line-clamp-2">
+            <h2 className="font-space-grotesk md:text-[17px] font-bold md:w-64 line-clamp-2">
               {title}
             </h2>
             <p className="text-gray-600 text-xs line-clamp-2 font-montserrat">

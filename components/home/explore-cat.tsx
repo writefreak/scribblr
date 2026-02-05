@@ -9,16 +9,16 @@ import { ArrowUpRight } from "lucide-react";
 const ExploreCat = () => {
   return (
     <Wrapper>
-      <p className="font-bold text-2xl md:text-3xl font-space-grotesk pt-15">
+      <h2 className="font-bold text-2xl md:text-3xl font-space-grotesk pt-15">
         Explore By Popular Categories
-      </p>
+      </h2>
 
       {/* Desktop grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-5 pt-5">
         {category.map((c) => (
           <Card
             key={c.id}
-            className="relative md:h-56 overflow-hidden rounded-xl p-0 shadow-md border border-gray-600"
+            className="relative md:h-56 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md border border-gray-600"
           >
             {/* Background image */}
             <img
