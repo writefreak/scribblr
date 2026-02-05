@@ -15,56 +15,59 @@ interface Props {
   image: string;
 }
 
+/* ... imports and props stay the same ... */
+
 const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Link href={`/blogs/${id}`} className="">
-      <Card className="p-0 rounded-2xl shadow-md">
-        <div className="h-56 md:h-56">
-          <img
-            src={image}
-            alt=""
-            className="h-full w-full object-cover rounded-t-2xl"
-          />
-        </div>
+    <Link href={`/blogs/${id}`} className="block">
+      <Card className="relative overflow-hidden rounded-2xl shadow-md h-80 group">
+        {/* Background Image */}
+        <img
+          src={image}
+          alt={title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
 
-        <div className="flex flex-col gap-4 px-5">
-          <div className="flex items-center justify-between">
-            <Badge className="text-xs font-space-grotesk tracking-wide text-white bg-[#377389] px-4">
-              {category}
-            </Badge>
+        {/* Content Container - Pinned to bottom */}
+        <div className="absolute inset-0 flex flex-col justify-end">
+          <div className="bg-black/40 backdrop-blur-sm p-5 text-white">
+            <div className="flex items-center justify-between mb-4">
+              <Badge className="text-xs font-space-grotesk tracking-wide text-white bg-[#377389] px-4">
+                {category}
+              </Badge>
 
-            <button
-              onClick={(e) => {
-                e.preventDefault(); // stop Link navigation
-                setLiked(!liked);
-              }}
-              className="flex items-center gap-1"
-            >
-              <Heart
-                height={20}
-                width={20}
-                className={
-                  liked ? "fill-red-500 stroke-red-500" : "stroke-gray-600"
-                }
-              />
-              <span className="text-xs">{likes}</span>
-            </button>
-          </div>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setLiked(!liked);
+                }}
+                className="flex items-center gap-1 z-10"
+              >
+                <Heart
+                  height={20}
+                  width={20}
+                  className={
+                    liked ? "fill-red-500 stroke-red-500" : "stroke-white"
+                  }
+                />
+                <span className="text-xs">{likes}</span>
+              </button>
+            </div>
 
-          <div className="space-y-4 pb-6">
-            <h2 className="font-space-grotesk md:text-[17px] font-bold md:w-64 line-clamp-2">
-              {title}
-            </h2>
-            <p className="text-gray-600 text-xs line-clamp-2 font-montserrat">
-              {desc}
-            </p>
+            <div className="space-y-2 pb-2">
+              <h2 className="font-space-grotesk md:text-[17px] font-bold line-clamp-2">
+                {title}
+              </h2>
+              <p className="text-gray-200 text-xs line-clamp-2 font-montserrat">
+                {desc}
+              </p>
+            </div>
           </div>
         </div>
       </Card>
     </Link>
   );
 };
-
 export default BlogCards;

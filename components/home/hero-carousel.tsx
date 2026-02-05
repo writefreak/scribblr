@@ -15,9 +15,12 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import BlogSearch from "../shared/blog-search";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export function HeroCarousel() {
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
+
+  const { isDark } = useColorScheme();
 
   return (
     <div ref={emblaRef} className="overflow-hidden">
@@ -63,10 +66,10 @@ export function HeroCarousel() {
                       </Badge>
                     )}
                     <div>
-                      <Button className="rounded-full bg-white/20 border-gray-500 border backdrop-blur-xl px-4 flex items-center justify-between">
+                      <Button className="rounded-full dark:bg-white/20 dark:text-white bg-white/20 border-gray-500 border backdrop-blur-xl px-4 flex items-center justify-between">
                         Read More
                         <div className="">
-                          <ArrowUpRight />
+                          <ArrowUpRight color={isDark ? "white" : ""} />
                         </div>
                       </Button>
                     </div>

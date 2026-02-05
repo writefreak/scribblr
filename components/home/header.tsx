@@ -11,6 +11,7 @@ import { Wrapper } from "../ui/wrapper";
 import { Button } from "../ui/button";
 import { Search, Sun } from "lucide-react";
 import { BurgerMenu } from "./burger-menu";
+import { ThemeSwitch } from "../ui/theme/theme-switch";
 // import { IntroPlayback } from "../home/intro-playback";
 
 type Props = {
@@ -58,11 +59,11 @@ export function Header({ className }: Props) {
               ))}
             </div>
             <div className=" flex items-center gap-2">
-              <div className="bg-[#377389] h-10 w-10 flex justify-center items-center rounded-full">
+              {/* <div className="bg-[#377389] h-10 w-10 flex justify-center items-center rounded-full">
                 <Search />
-              </div>
-              <div className="bg-[#377389] h-10 w-10 flex justify-center items-center rounded-full">
-                <Sun />
+              </div> */}
+              <div>
+                <ThemeSwitch />
               </div>
               <div className=" md:hidden">
                 <BurgerMenu />

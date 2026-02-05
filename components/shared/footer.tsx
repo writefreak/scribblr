@@ -20,7 +20,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-2">
                       {links.map((l, index) => (
                         <Link key={index} href={l.link}>
-                          <p className="md:text-sm  text-xs  font-montserrat text-gray-200">
+                          <p className="md:text-sm  text-xs hover:underline font-montserrat text-gray-200">
                             {l.slug}
                           </p>
                         </Link>
@@ -34,7 +34,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-2">
                       {socials.map((l, index) => (
                         <Link key={index} href={l.link}>
-                          <p className="md:text-sm  text-xs font-montserrat text-gray-200">
+                          <p className="md:text-sm hover:underline text-xs font-montserrat text-gray-200">
                             {l.slug}
                           </p>
                         </Link>
@@ -48,7 +48,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-2">
                       {legals.map((l, index) => (
                         <Link key={index} href={l.link}>
-                          <p className="md:text-sm  text-xs font-montserrat text-gray-200">
+                          <p className="md:text-sm hover:underline text-xs font-montserrat text-gray-200">
                             {l.slug}
                           </p>
                         </Link>

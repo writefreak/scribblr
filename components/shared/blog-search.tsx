@@ -35,7 +35,7 @@ const BlogSearch = ({ className, search }: Props) => {
             className="outline-none font-space-grotesk w-full p-3 bg-transparent"
           />
 
-          <Button className="h-10 bg-[#377389] w-10 rounded-full">
+          <Button className="h-10 bg-[#377389] text-white hover:bg-transparent hover:border w-10 rounded-full">
             <Search />
           </Button>
         </form>

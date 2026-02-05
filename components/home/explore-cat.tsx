@@ -5,8 +5,11 @@ import { Card } from "../ui/card";
 import { Wrapper } from "../ui/wrapper";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { color } from "framer-motion";
 
 const ExploreCat = () => {
+  const { isDark } = useColorScheme();
   return (
     <Wrapper>
       <h2 className="font-bold text-2xl md:text-3xl font-space-grotesk pt-15">
@@ -18,7 +21,7 @@ const ExploreCat = () => {
         {category.map((c) => (
           <Card
             key={c.id}
-            className="relative md:h-56 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md border border-gray-600"
+            className="relative md:h-56 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md dark:border-0.5px dark:border-gray-900 border border-gray-600"
           >
             {/* Background image */}
             <img
@@ -36,13 +39,15 @@ const ExploreCat = () => {
                 <h2 className="font-space-grotesk font-semibold text-lg md:text-xl">
                   {c.title}
                 </h2>
-                <p className="text-xs font-montserrat text-gray-200 md:text-sm line-clamp-3 md:line-clamp mt-1">
+                <p className="text-xs font-montserrat text-gray-200 dark:text-gray-100 md:text-xs line-clamp-3 md:line-clamp mt-1">
                   {c.slug}
                 </p>
               </div>
-              <Button className="mt-3 rounded-full md:h-9 w-24 md:w-28 bg-[#377389]/50 border-gray-600 border backdrop-blur-xl md:flex items-center justify-center gap-2 text-sm">
-                <span className="text-xs md:text-base"> Explore</span>
-                <ArrowUpRight size={16} />
+              <Button className="mt-3 rounded-full md:h-9 w-24 md:w-28 dark:bg-[#377389]/50 bg-[#377389]/50 border-gray-600 border backdrop-blur-xl md:flex items-center justify-center gap-2 text-sm">
+                <span className="text-xs md:text-base dark:text-white">
+                  Explore
+                </span>
+                <ArrowUpRight color={isDark ? "white" : "black"} size={16} />
               </Button>
             </div>
           </Card>

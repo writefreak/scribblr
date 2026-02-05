@@ -52,7 +52,7 @@ const TrendingStories = () => {
         <div className="shrink-0">
           <div className="relative md:h-56 overflow-hidden rounded-xl md:rounded-2xl p-0">
             <div className="flex flex-col justify-center w-72 h-full p-4 py-7 space-y-3">
-              <p className="text-xs md:text-sm font-montserrat mt-1">
+              <p className="text-xs md:text-[12.5px] dark:font-light font-montserrat mt-1">
                 Explore stories that are capturing the most attention from our
                 readers right now. Carefully curated based on engagement,
                 relevance, and impact, this section highlights the articles
@@ -73,13 +73,13 @@ const TrendingStories = () => {
               className="absolute inset-0 w-full h-full object-cover"
             />
 
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/50 backdrop-blur-[1px]" />
+            <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/60 backdrop-blur-[1px]" />
 
             <div className="relative z-10 flex flex-col justify-center h-full p-4 py-7 text-white space-y-3">
               <h2 className="font-space-grotesk font-semibold text-lg md:text-xl">
                 {c.title}
               </h2>
-              <p className="text-xs text-gray-200 md:text-sm line-clamp-3 mt-1">
+              <p className="text-xs font-montserrat dark:font-light text-gray-200 line-clamp-3 mt-1">
                 {c.slug}
               </p>
             </div>
@@ -89,7 +89,7 @@ const TrendingStories = () => {
 
       {/* Navigation + Explore */}
       <div className="mt-4 flex items-center justify-between">
-        <Button className="rounded-full md:h-9 bg-[#377389] border backdrop-blur-xl flex items-center gap-2 text-sm">
+        <Button className="rounded-full md:h-9 dark:bg-[#377389] text-white bg-[#377389] border backdrop-blur-xl flex items-center gap-2 text-sm">
           <span className="text-xs md:text-sm font-space-grotesk">
             Explore more stories
           </span>
@@ -99,7 +99,7 @@ const TrendingStories = () => {
           <Button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            className="rounded-full h-9 w-9 p-0 bg-[#377389] disabled:opacity-40"
+            className="rounded-full h-9 w-9 p-0 bg-[#377389] disabled:opacity-40 text-white"
           >
             <ChevronLeft size={18} />
           </Button>
@@ -107,7 +107,7 @@ const TrendingStories = () => {
           <Button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            className="rounded-full h-9 w-9 p-0 bg-[#377389] disabled:opacity-40"
+            className="rounded-full h-9 w-9 p-0 bg-[#377389] disabled:opacity-40  text-white"
           >
             <ChevronRight size={18} />
           </Button>

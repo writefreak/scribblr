@@ -28,7 +28,7 @@ const EditorStrip = ({ image, title, desc, link }: Props) => {
                   {title}
                 </h3>
 
-                <p className="font-montserrat line-clamp-2 text-[11px] w-96 text-gray-600">
+                <p className="font-montserrat line-clamp-2 text-[11px] w-96 dark:text-gray-400 text-gray-600">
                   {desc}
                 </p>
               </div>

@@ -137,3 +137,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* globals.css */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #377389;
+}
