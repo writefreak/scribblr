@@ -7,7 +7,7 @@ import { Heart } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
-  id: string;
+  id?: string | any;
   category: string;
   title: string;
   desc: string;

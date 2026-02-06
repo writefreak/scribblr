@@ -21,7 +21,12 @@ const BlogSearch = ({ className, search }: Props) => {
   }
 
   return (
-    <div className={cn(" md:w-125 pt-2 md:pt-0 md:pb-5 space-y-3 ", className)}>
+    <div
+      className={cn(
+        " md:w-125 w-[360px] pt-2 md:pt-0 md:pb-5 space-y-3 ",
+        className,
+      )}
+    >
       <div className="md:pb-2">
         <form
           action=""
