@@ -140,7 +140,7 @@
 
 /* globals.css */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-track {

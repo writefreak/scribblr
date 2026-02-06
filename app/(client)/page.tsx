@@ -12,7 +12,7 @@ import React from "react";
 const page = () => {
   return (
     <div className="flex flex-col pb-10">
-      <Header />
+      {/* <Header /> */}
 
       <div className="flex flex-col gap-10 md:p-0">
         {/* <Hero /> */}

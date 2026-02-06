@@ -1,13 +1,5 @@
-// import Footer from "@/components/home/footer";
-// import { Navbar } from "@/components/shared/navbar";
 import { Header } from "@/components/home/header";
 import Footer from "@/components/shared/footer";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Scribblr",
-  description: "Scribblr blog website",
-};
 
 export default function ClientLayout({
   children,
@@ -15,14 +7,14 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div>
-        <div className="flex items-center justify-center">
-          {/* <Header /> */}
-        </div>
-        {children}
-        <Footer />
+    <div className="flex min-h-screen flex-col">
+      <div className="flex w-full justify-center">
+        <Header />
       </div>
-    </>
+
+      <main className="flex-1">{children}</main>
+
+      <Footer />
+    </div>
   );
 }

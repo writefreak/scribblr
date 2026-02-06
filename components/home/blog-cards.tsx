@@ -21,7 +21,7 @@ const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Link href={`/blogs/${id}`} className="block">
+    <Link href={`/each-blog/${id}`} className="block">
       <Card className="relative overflow-hidden rounded-2xl shadow-md h-80 group">
         {/* Background Image */}
         <img

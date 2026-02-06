@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div>
       <div>
-        <div className="bg-[#377389]">
+        <div className="bg-[#377389] dark:bg-[#171717]">
           <Wrapper>
             <div className="md:pb-10">
               <div className="flex flex-col md:flex-row justify-between items-center">

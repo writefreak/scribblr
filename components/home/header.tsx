@@ -32,12 +32,12 @@ export function Header({ className }: Props) {
       className={cn(
         " text-white z-10",
         className,
-        path === "/" && " absolute inset-x-0 top-0 left-0",
+        " absolute inset-x-0 top-0 left-0",
       )}
     >
       <Wrapper>
         <div>
-          <div className=" w-full flex justify-between py-3 font-inter items-center">
+          <div className="w-full flex justify-between py-3 font-inter items-center">
             <h2 className="font-bold text-xl md:text-2xl  font-space-grotesk">
               Scribblr.
             </h2>

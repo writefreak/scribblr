@@ -44,10 +44,8 @@ const ExploreCat = () => {
                 </p>
               </div>
               <Button className="mt-3 rounded-full md:h-9 w-24 md:w-28 dark:bg-[#377389]/50 bg-[#377389]/50 border-gray-600 border backdrop-blur-xl md:flex items-center justify-center gap-2 text-sm">
-                <span className="text-xs md:text-base dark:text-white">
-                  Explore
-                </span>
-                <ArrowUpRight color={isDark ? "white" : "black"} size={16} />
+                <span className="text-xs md:text-base text-white">Explore</span>
+                <ArrowUpRight size={16} />
               </Button>
             </div>
           </Card>
