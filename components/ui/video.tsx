@@ -9,7 +9,7 @@ const Video = ({ className }: Props) => {
   return (
     <div className={cn("", className)}>
       <video
-        className="md:w-full brightness-50 h-150 object-cover"
+        className="md:w-full brightness-50 object-cover"
         autoPlay
         muted
         loop
