@@ -50,14 +50,9 @@ export function HeroCarousel() {
 
               {/* overlay content */}
               <div className="relative z-20 flex flex-col gap-6 p-4 md:px-14">
-                <motion.h1
-                  initial={{ y: 200, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1 }}
-                  className="text-2xl font-space-grotesk md:text-6xl font-bold text-white w-72 md:w-187.5"
-                >
+                <h1 className="text-2xl font-space-grotesk md:text-6xl font-bold text-white w-72 md:w-187.5">
                   {story.title}
-                </motion.h1>
+                </h1>
                 <div className="flex flex-col pt-5 md:gap-4">
                   <div className="flex items-center gap-2 font-space-grotesk">
                     {story.category && (
