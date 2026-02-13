@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 md:pb-16">
       <BlogHero />
       <CategoryWrapper />
     </div>

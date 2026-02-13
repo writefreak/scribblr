@@ -47,7 +47,7 @@ const TrendingStories = ({ id }: Props) => {
   const router = useRouter();
 
   return (
-    <Wrapper>
+    <Wrapper className="md:pb-10">
       <h2 className="font-bold text-2xl md:text-3xl font-space-grotesk pt-15">
         Trending Stories
       </h2>

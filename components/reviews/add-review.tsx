@@ -74,7 +74,7 @@ export function AddReview({ text, title }: Props) {
         <DialogContent className="sm:max-w-106.25 not-dark:bg-white">
           <DialogHeader>
             <DialogTitle className="font-space-grotesk">
-              Write a review
+              Drop a comment
             </DialogTitle>
             <DialogDescription className="font-montserrat text-xs">
               Tell others how you feel about our blogs and how you'd like us to
@@ -88,7 +88,7 @@ export function AddReview({ text, title }: Props) {
                 placeholder="Please input your name..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="placeholder:text-xs border border-gray-600 font-montserrat p-2 rounded-md text-sm"
+                className="placeholder:text-xs border border-gray-300 outline-gray-300 outline font-montserrat p-2 rounded-md text-sm"
               />
             </div>
 
@@ -97,7 +97,7 @@ export function AddReview({ text, title }: Props) {
                 placeholder="Write your review..."
                 value={reviewText}
                 onChange={(e) => setReviewText(e.target.value)}
-                className="h-20 placeholder:text-xs border border-gray-600 font-montserrat p-2 rounded-md text-sm resize-none"
+                className="h-20 placeholder:text-xs border border-gray-300 outline-gray-300 outline font-montserrat p-2 rounded-md text-sm resize-none"
                 draggable="false"
               ></textarea>
             </div>
@@ -109,14 +109,14 @@ export function AddReview({ text, title }: Props) {
             <DialogClose asChild>
               <Button
                 variant="outline"
-                className="border border-gray-600 font-montserrat"
+                className="border border-gray-600 font-space-grotesk"
               >
                 Cancel
               </Button>
             </DialogClose>
             <Button
               onClick={handleSave}
-              className="bg-[#377389] dark:text-white"
+              className="bg-[#377389] dark:text-white font-space-grotesk"
               disabled={loading}
             >
               {loading ? "Saving..." : "Save changes"}

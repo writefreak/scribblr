@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div>
       <About />
-      <div className="">
+      <div className="md:pb-16">
         <AboutText />
       </div>
     </div>

@@ -38,9 +38,11 @@ export function Header({ className }: Props) {
       <Wrapper>
         <div>
           <div className="w-full flex justify-between py-3 font-inter items-center">
-            <h2 className="font-bold text-xl md:text-2xl  font-space-grotesk">
-              Scribblr.
-            </h2>
+            <Link href={"/"}>
+              <h2 className="font-bold text-xl md:text-2xl font-space-grotesk select-none">
+                Scribblr.
+              </h2>
+            </Link>
             {/*  */}
 
             <div className=" space-x-2 bg-white/20 border-gray-500 border backdrop-blur-md p-1 rounded-full not-md:hidden">
