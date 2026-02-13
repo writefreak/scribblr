@@ -69,7 +69,7 @@ export function HeroCarousel() {
                       <Button className="rounded-full dark:bg-white/20 dark:text-white bg-white/20 border-gray-500 border backdrop-blur-xl px-4 flex items-center justify-between">
                         Read More
                         <div className="">
-                          <ArrowUpRight color={isDark ? "white" : ""} />
+                          <ArrowUpRight color="white" />
                         </div>
                       </Button>
                     </div>
