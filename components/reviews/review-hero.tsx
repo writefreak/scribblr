@@ -4,14 +4,13 @@ import { Wrapper } from "../ui/wrapper";
 import BlogSearch from "../shared/blog-search";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import CategoryWrapper from "./category-wrapper";
 
-const BlogHead = () => {
+const ReviewHero = () => {
   return (
     <div className="relative z-0 md:h-100 h-80">
       {/* Image as background */}
       <img
-        src="/home/img4.jpg"
+        src="/img11.jpg"
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -22,9 +21,9 @@ const BlogHead = () => {
       {/* Text on top */}
       <Wrapper>
         <div className="relative z-10">
-          <div className=" flex flex-col gap-6 md:gap-8 pt-32 h-full">
-            <h2 className="font-space-grotesk w-74 md:w-187.5 text-3xl md:text-6xl font-bold  text-white">
-              Local Startup Raises Funding to Expand Across West Africa
+          <div className=" flex items-center flex-col gap-6 md:gap-8 pt-32 h-full">
+            <h2 className="font-space-grotesk text-center w-73.5 md:w-[766.5px] text-3xl md:text-6xl font-bold  text-white">
+              Here's What They're Saying About Us
             </h2>
           </div>
         </div>
@@ -33,4 +32,4 @@ const BlogHead = () => {
   );
 };
 
-export default BlogHead;
+export default ReviewHero;

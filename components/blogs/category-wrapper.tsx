@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import BlogCards from "../home/blog-cards";
 import { Wrapper } from "../ui/wrapper";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Info, InfoIcon } from "lucide-react";
 import { div } from "framer-motion/client";
 
 const CategoryWrapper = () => {
@@ -88,28 +88,37 @@ const CategoryWrapper = () => {
 
       {/* 3. Blog Grid Display */}
       <Wrapper>
-        <div
-          ref={scrollRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          className=" flex  md:overflow-x-hidden overflow-x-auto scrollbar-hide pb-5 md:grid-cols-3 gap-3 md:gap-4 md:items-center md:justify-center"
-        >
-          {filteredPosts.map((post, index) => (
-            <div
-              data-card
-              key={index}
-              className="shrink-0 w-[80%] lg:w-[30%] md:w-[30%]"
-            >
-              <BlogCards
-                image={post.image}
-                title={post.title}
-                desc={post.description}
-                category={post.category}
-                likes={post.likes}
-              />
-            </div>
-          ))}
-        </div>
+        {filteredPosts.length > 0 ? (
+          <div
+            ref={scrollRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            className="flex md:overflow-x-hidden overflow-x-auto scrollbar-hide pb-5 md:grid-cols-3 gap-3 md:gap-4 md:items-center md:justify-center"
+          >
+            {filteredPosts.map((post, index) => (
+              <div
+                data-card
+                key={index}
+                className="shrink-0 w-[80%] lg:w-[30%] md:w-[30%]"
+              >
+                <BlogCards
+                  image={post.image}
+                  title={post.title}
+                  desc={post.description}
+                  category={post.category}
+                  likes={post.likes}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="py-20 flex flex-col items-center gap-3 text-center w-full">
+            <Info height={50} width={50} strokeWidth={1} />
+            <p className="text-xl font-medium font-space-grotesk dark:text-gray-300">
+              Sorry, no blogs found in this category yet!
+            </p>
+          </div>
+        )}
         {isMobile && (
           <div className="flex relative z-50 gap-3 justify-end">
             <Button

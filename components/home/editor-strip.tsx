@@ -24,11 +24,11 @@ const EditorStrip = ({ image, title, desc, link }: Props) => {
 
             <div className="flex flex-col gap-2">
               <div className="space-y-1">
-                <h3 className="font-space-grotesk line-clamp-1 md:text-base font-medium leading-snug">
+                <h3 className="font-space-grotesk line-clamp-1 text-xs md:text-base font-medium leading-snug">
                   {title}
                 </h3>
 
-                <p className="font-montserrat line-clamp-2 text-[11px] w-96 dark:text-gray-400 text-gray-600">
+                <p className="font-montserrat line-clamp-2 text-[11px] md:w-96 dark:text-gray-300 text-gray-600">
                   {desc}
                 </p>
               </div>

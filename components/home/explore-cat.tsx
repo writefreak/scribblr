@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { color } from "framer-motion";
+import Link from "next/link";
 
 const ExploreCat = () => {
   const { isDark } = useColorScheme();
@@ -43,10 +44,14 @@ const ExploreCat = () => {
                   {c.slug}
                 </p>
               </div>
-              <Button className="mt-3 rounded-full md:h-9 w-24 md:w-28 dark:bg-[#377389]/50 bg-[#377389]/50 border-gray-600 border backdrop-blur-xl md:flex items-center justify-center gap-2 text-sm">
-                <span className="text-xs md:text-base text-white">Explore</span>
-                <ArrowUpRight size={16} color="white" />
-              </Button>
+              <Link href={"/blogs"}>
+                <Button className="mt-3 rounded-full md:h-9 w-24 md:w-28 dark:bg-[#377389]/50 bg-[#377389]/50 border-gray-600 border backdrop-blur-xl md:flex items-center justify-center gap-2 text-sm">
+                  <span className="text-xs md:text-base text-white">
+                    Explore
+                  </span>
+                  <ArrowUpRight size={16} color="white" />
+                </Button>
+              </Link>
             </div>
           </Card>
         ))}

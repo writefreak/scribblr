@@ -48,6 +48,7 @@ const BlogCards = ({ category, title, desc, likes, image, id }: Props) => {
                 <Heart
                   height={20}
                   width={20}
+                  strokeWidth={1}
                   className={
                     liked ? "fill-red-500 stroke-red-500" : "stroke-white"
                   }

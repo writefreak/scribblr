@@ -10,7 +10,7 @@ const ContactHero = () => {
     <div className="relative z-0 md:h-100 h-80">
       {/* Image as background */}
       <img
-        src="/blog/img7.jpg"
+        src="/img12.jpg"
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />

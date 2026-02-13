@@ -11,7 +11,7 @@ const ContactCards = () => {
           const Icon = item.icon;
           return (
             <Link key={index} href={item.link}>
-              <Card className="max-w-75 dark:bg-background/30 not-dark:bg-[#377389]/10 backdrop-blur-xl rounded-xl border border-white/10 p-4  dark:text-white">
+              <Card className="max-w-75 dark:bg-[#171717] not-dark:bg-[#377389]/10 backdrop-blur-xl rounded-xl border border-white/10 p-4  dark:text-white">
                 <div className="flex flex-col items-center gap-4">
                   <div className="h-10 w-10 not-dark:bg-[#377389] rounded-full not-dark:border-0 border flex items-center justify-center not-dark:shadow-md">
                     <Icon

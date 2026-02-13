@@ -1,23 +1,57 @@
-import React from "react";
+"use state";
+import React, { useState } from "react";
 import HtmlText from "../ui/html-text";
+import { Separator } from "../ui/separator";
+import { Heart } from "lucide-react";
 
 const Blog = () => {
+  const [liked, setLiked] = useState(false);
   return (
     <div className="">
       <div>
-        <div className="p-6 md:px-16 md:py-12 md:p-0 space-y-5">
+        <div className="p-6 md:p-0 space-y-5">
           <div className=""></div>
           <div className="">
             <div className="md:pt-6 space-y-3">
               <div className="space-y-3">
-                <h3 className="md:text-4xl font-inter w-96 md:w-full text-2xl"></h3>
-                <div className=" bg-lime-600 w-24 rounded-full text-center p-1">
-                  <h6 className="text-xs"></h6>
+                <h3 className="font-space-grotesk md:w-full md:text-xl">
+                  Technology
+                </h3>
+                <div className=" bg-[#377389] w-16 rounded-full text-center p-[0.5]"></div>
+                <div>
+                  <HtmlText
+                    text={text}
+                    className="font-montserrat text-[13px] md:text-sm  font-light py-7 "
+                  />
                 </div>
-                <HtmlText
-                  text={text}
-                  className="font-montserrat font-light md:pt-5"
-                />
+
+                <Separator />
+                <div className="flex items-center justify-between">
+                  <div className="font-montserrat text-xs md:text-sm text-gray-300 not-dark:text-gray-500">
+                    February 06, 2026
+                  </div>
+                  <div className="font-montserrat text-sm text-gray-300 not-dark:text-gray-500">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setLiked(!liked);
+                      }}
+                      className="flex items-center gap-1 z-10"
+                    >
+                      <Heart
+                        height={20}
+                        width={20}
+                        className={
+                          liked
+                            ? "fill-red-500 stroke-red-500"
+                            : "dark:stroke-white"
+                        }
+                        strokeWidth={1}
+                      />
+                      <span className="text-xs">1.2k likes</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

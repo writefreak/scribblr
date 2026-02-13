@@ -5,8 +5,14 @@ import { Card } from "../ui/card";
 import { Wrapper } from "../ui/wrapper";
 import { Button } from "../ui/button";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const TrendingStories = () => {
+interface Props {
+  id?: string | any;
+}
+
+const TrendingStories = ({ id }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -38,6 +44,8 @@ const TrendingStories = () => {
     return () => el.removeEventListener("scroll", checkScroll);
   }, []);
 
+  const router = useRouter();
+
   return (
     <Wrapper>
       <h2 className="font-bold text-2xl md:text-3xl font-space-grotesk pt-15">
@@ -51,8 +59,8 @@ const TrendingStories = () => {
       >
         <div className="shrink-0">
           <div className="relative md:h-56 overflow-hidden rounded-xl md:rounded-2xl p-0">
-            <div className="flex flex-col justify-center w-72 h-full p-4 py-7 space-y-3">
-              <p className="text-xs md:text-[12.5px] dark:font-light font-montserrat mt-1">
+            <div className="flex flex-col items-center justify-center w-72 h-full p-4 py-7 space-y-3">
+              <p className="text-[11px] md:text-[12px] dark:font-light font-montserrat pt-1">
                 Explore stories that are capturing the most attention from our
                 readers right now. Carefully curated based on engagement,
                 relevance, and impact, this section highlights the articles
@@ -62,34 +70,33 @@ const TrendingStories = () => {
           </div>
         </div>
 
-        {category.map((c) => (
-          <Card
-            key={c.id}
-            className="relative w-56 md:w-60 md:h-56 shrink-0 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md border border-gray-600"
-          >
-            <img
-              src={c.img}
-              alt={c.title}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+        {breakingNews.map((c, index) => (
+          <Link href={`/each-blog/${id}`} key={index}>
+            <Card className="relative w-56 md:w-60 h-52 md:h-56 shrink-0 overflow-hidden rounded-xl md:rounded-2xl p-0 shadow-md border not-dark:border-gray-600">
+              <img
+                src={c.image}
+                alt={c.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/60 backdrop-blur-[1px]" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/60 backdrop-blur-[1px]" />
 
-            <div className="relative z-10 flex flex-col justify-center h-full p-4 py-7 text-white space-y-3">
-              <h2 className="font-space-grotesk font-semibold text-lg md:text-xl">
-                {c.title}
-              </h2>
-              <p className="text-xs font-montserrat dark:font-light text-gray-200 line-clamp-3 mt-1">
-                {c.slug}
-              </p>
-            </div>
-          </Card>
+              <div className="relative z-10 flex flex-col justify-center h-full p-4 py-7 text-white space-y-3">
+                <h2 className="font-space-grotesk font-semibold text-lg md:text-xl">
+                  {c.title}
+                </h2>
+              </div>
+            </Card>
+          </Link>
         ))}
       </div>
 
       {/* Navigation + Explore */}
-      <div className="mt-4 flex items-center justify-between">
-        <Button className="rounded-full md:h-9 dark:bg-[#377389] text-white bg-[#377389] border backdrop-blur-xl flex items-center gap-2 text-sm">
+      <div className="pt-4 flex items-center justify-between">
+        <Button
+          onClick={() => router.push("/blogs")}
+          className="rounded-full md:h-9 dark:bg-[#377389] text-white bg-[#377389] border backdrop-blur-xl flex items-center gap-2 text-sm"
+        >
           <span className="text-xs md:text-sm font-space-grotesk">
             Explore more stories
           </span>
@@ -119,29 +126,52 @@ const TrendingStories = () => {
 
 export default TrendingStories;
 
-const category = [
+const breakingNews = [
   {
-    id: 1,
-    img: `/home/img2.jpg`,
-    title: "Tech News & Updates",
-    slug: "Browse our vast library of stories relating to the world of technology to gain ideas and insights",
+    title: "Social Media Users React to Sudden Platform Feature Changes",
+    image: "/home/img5.jpg",
+    link: "/news/social-media-updates",
+    desc: `Users across major platforms share mixed reactions as 
+    unexpected feature updates roll out, sparking debates on usability,
+    privacy, and platform direction.`,
   },
   {
-    id: 2,
-    img: `/home/img4.jpg`,
-    title: "Business & Finance",
-    slug: "Stories, insights, and practical takes on business, investing, and how ideas turn into real ventures.",
+    title: "Government Announces New Digital Policy for Startups",
+    image: "/home/img1.jpg",
+    link: "/news/digital-policy",
+    desc: `The government unveils a new digital policy aimed at 
+    supporting startups, focusing on innovation funding, data protection, 
+    and easing regulatory barriers.`,
   },
   {
-    id: 3,
-    img: `/home/img3.jpg`,
-    title: "Entertainment",
-    slug: "Thoughts, reviews, and commentary on films, music, trends, and pop culture moments.",
+    title: "Tech Community Divided Over Latest AI Regulations",
+    image: "/home/img2.jpg",
+    link: "/news/ai-regulations",
+    desc: `Developers, companies, and researchers clash over 
+    newly introduced AI regulations, weighing ethical safeguards
+    against potential limits on innovation.`,
   },
   {
-    id: 4,
-    img: `/home/img6.jpg`,
-    title: "Healthcare",
-    slug: "Explore healthcare trends, medical innovation, and the challenges shaping modern care.",
+    title: "Major Tech Firms Report Slower Growth Amid Global Uncertainty",
+    image: "/home/img3.jpg",
+    link: "/news/tech-growth-slowdown",
+    desc: `Leading technology companies reveal slower revenue 
+    growth as economic uncertainty, rising costs, and market
+    saturation impact global performance.`,
+  },
+  {
+    title: "Cybersecurity Experts Warn of Increase in Phishing Attacks",
+    image: "/home/img4.jpg",
+    link: "/news/phishing-alert",
+    desc: `Security analysts raise concerns over a 
+    sharp rise in phishing attempts, urging users and businesses
+    to strengthen digital safety practices.`,
+  },
+  {
+    title: "New Smartphone Launch Sparks Debate Over Innovation",
+    image: "/home/img5.jpg",
+    link: "/news/smartphone-launch",
+    desc: `The latest smartphone release draws mixed reactions, 
+    with consumers questioning whether recent upgrades truly push innovation forward.`,
   },
 ];
