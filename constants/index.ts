@@ -1,0 +1,63 @@
+import {
+  IconBellRinging,
+  IconBuilding,
+  IconCategory,
+  IconChartBar,
+  IconDashboard,
+  IconHomePlus,
+  IconNews,
+  IconSettings,
+} from "@tabler/icons-react";
+export const data = {
+  user: {
+    name: "The Scribblr",
+    email: "YS@gmail.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+  navMain: [
+    {
+      title: "Dashboard",
+      url: "/admin/dashboard",
+      icon: IconDashboard,
+    },
+    {
+      title: "Blogs",
+      url: "/admin/blogs",
+      icon: IconNews,
+    },
+    {
+      title: "Notifications",
+      url: "/admin/notifications",
+      icon: IconBellRinging,
+    },
+    {
+      title: "Categories",
+      url: "/admin/categories",
+      icon: IconCategory,
+    },
+    {
+      title: "Analytics",
+      url: "/admin/analytics",
+      icon: IconChartBar,
+    },
+  ],
+  navSecondary: [
+    {
+      title: "Settings",
+      url: "/admin/settings",
+      icon: IconSettings,
+    },
+  ],
+};
+
+export enum Paths {
+  Home = "/",
+  Signin = "/auth/signin",
+  Signup = "/auth/signup",
+  VerifyEmail = "/auth/verify",
+  ResetPassword = "/auth/reset-password",
+}
+
+export const APP_TITLE = "The Scribblr" as const;
+// export const APP_EMAIL = `joshuahumphrey579@gmail.com` as const;
+// export const ProductPath = `/admin/products` as const;

@@ -102,12 +102,12 @@ const SignForm = () => {
             </div>
 
             <div className="pt-4 space-y-4">
-              <Button className="w-full font-semibold bg-[#377389] hover:bg-[#377389]/50">
+              <Button className="w-full font-semibold text-white font-space-grotesk bg-[#377389] hover:bg-[#377389]/50">
                 Create Account
               </Button>
               <div className="text-xs flex items-center gap-1 md:gap-2 font-montserrat">
                 <span className="text-white">Already have an account?</span>
-                <Link href={"/auth/login"} className="text-[#377389] underline">
+                <Link href={"/auth/login"} className="text-white underline">
                   Login
                 </Link>
               </div>

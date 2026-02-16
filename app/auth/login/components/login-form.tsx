@@ -153,15 +153,12 @@ const LoginForm = () => {
             </div>
 
             <div className="pt-4 space-y-4">
-              <Button className="w-full font-semibold bg-[#377389] hover:bg-[#377389]/50">
+              <Button className="w-full font-semibold text-white font-space-grotesk bg-[#377389] hover:bg-[#377389]/50">
                 Login
               </Button>
               <div className="text-xs flex items-center gap-1 md:gap-2 font-montserrat">
                 <span className="text-white">Don't have an account?</span>
-                <Link
-                  href={"/auth/signup"}
-                  className="text-[#377389] underline"
-                >
+                <Link href={"/auth/signup"} className="text-white underline">
                   Signup
                 </Link>
               </div>

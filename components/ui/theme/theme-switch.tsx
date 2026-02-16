@@ -4,8 +4,13 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-export function ThemeSwitch() {
+interface Props {
+  className?: string;
+}
+
+export function ThemeSwitch({ className }: Props) {
   const { theme, setTheme, resolvedTheme } = useTheme();
 
   // Helper function to toggle between light and dark
@@ -18,7 +23,10 @@ export function ThemeSwitch() {
     <Button
       size="icon"
       onClick={toggleTheme}
-      className="relative rounded-full p-1 bg-[#377389]/10 backdrop-blur-xl hover:bg-transparent border border-gray-600"
+      className={cn(
+        "relative rounded-full p-1 bg-[#377389] hover:bg-[#377389]/40 dark:bg-[#377389]/10 backdrop-blur-xl dark:hover:bg-transparent dark:border border-gray-600",
+        className,
+      )}
     >
       <Sun
         color="white"
