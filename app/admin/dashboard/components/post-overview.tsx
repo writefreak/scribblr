@@ -39,44 +39,45 @@ const recentPosts = [
 
 export function PostOverview() {
   return (
-    <Card className="px-3">
-      <Table>
-        <TableHeader>
-          <TableRow className="font-space-grotesk">
-            <TableHead className="w-75">Recent Posts</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="text-right">Date</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {recentPosts.map((post) => (
-            <TableRow key={post.id}>
-              <TableCell className="font-medium font-montserrat text-xs line-clamp-1">
-                {post.title}
-              </TableCell>
-              <TableCell className="font-montserrat text-xs">
-                <div className={getStatusStyles(post.status)}>
-                  {post.status}
-                </div>
-              </TableCell>
-              <TableCell className="text-right font-montserrat text-xs text-muted-foreground">
-                {post.date}
-              </TableCell>
+    <Card className="px-3 overflow-x-hidden md:overflow-visible">
+      <div className="w-full">
+        <Table className="w-full table-fixed">
+          <TableHeader>
+            <TableRow className="font-space-grotesk">
+              <TableHead className="w-1/2 md:w-auto">Recent Posts</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead className="text-right">Date</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {recentPosts.map((post) => (
+              <TableRow key={post.id}>
+                <TableCell className="font-medium font-montserrat text-xs truncate max-w-[140px] md:max-w-none">
+                  {post.title}
+                </TableCell>
+                <TableCell className="font-montserrat text-xs">
+                  <div className={getStatusStyles(post.status)}>
+                    {post.status}
+                  </div>
+                </TableCell>
+                <TableCell className="text-right font-montserrat text-xs text-muted-foreground">
+                  {post.date}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </Card>
   );
 }
 
-// Simple helper for status colors
 const getStatusStyles = (status: any) => {
   switch (status.toLowerCase()) {
     case "published":
-      return " text-green-600 ";
+      return "text-green-600";
     case "draft":
-      return "text-blue-800 ";
+      return "text-blue-800";
     default:
       return "";
   }

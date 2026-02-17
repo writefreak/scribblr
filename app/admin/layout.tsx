@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import AdminHeader from "@/components/admin/admin-header";
+import MobileNav from "@/components/admin/mobile-nav";
 
 export const metadata: Metadata = {
   title: "The Scribblr Admin",
@@ -26,6 +27,9 @@ export default async function AdminLayout({
       <AdminSidebar user={user} pendings={0} />
       <SidebarInset>
         <div className="px-4 py-4 not-dark:bg-[#eef1f9]/30">
+          <div className="flex justify-end pb-4">
+            <MobileNav />
+          </div>
           <AdminHeader />
         </div>
         <div className="flex flex-1 flex-col not-dark:bg-[#eef1f9]/30">

@@ -5,6 +5,7 @@ import {
   IconChartBar,
   IconDashboard,
   IconHomePlus,
+  IconMessage,
   IconNews,
   IconSettings,
 } from "@tabler/icons-react";
@@ -26,10 +27,11 @@ export const data = {
       icon: IconNews,
     },
     {
-      title: "Notifications",
-      url: "/admin/notifications",
-      icon: IconBellRinging,
+      title: "Comments",
+      url: "/admin/comments",
+      icon: IconMessage,
     },
+
     {
       title: "Categories",
       url: "/admin/categories",
@@ -39,6 +41,11 @@ export const data = {
       title: "Analytics",
       url: "/admin/analytics",
       icon: IconChartBar,
+    },
+    {
+      title: "Notifications",
+      url: "/admin/notifications",
+      icon: IconBellRinging,
     },
   ],
   navSecondary: [

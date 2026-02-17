@@ -84,12 +84,12 @@ export function RecentActivity() {
       {/* <CardHeader className="p-0 font-space-grotesk font-medium">
         Recent Activities
       </CardHeader> */}
-      <Table>
+      <Table className="w-full table-fixed">
         <TableHeader>
           <TableRow className="font-space-grotesk">
-            <TableHead className="w-75">Recent Activity</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead className="text-right">Date</TableHead>
+            <TableHead className="w-1/2">Recent Activity</TableHead>
+            <TableHead className="w-1/4">Type</TableHead>
+            <TableHead className="w-1/4 text-right">Date</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
