@@ -27,7 +27,7 @@ export default async function AdminLayout({
       <AdminSidebar user={user} pendings={0} />
       <SidebarInset>
         <div className="px-4 py-4 not-dark:bg-[#eef1f9]/30">
-          <div className="flex justify-end pb-4">
+          <div className="flex justify-end pb-4 md:hidden">
             <MobileNav />
           </div>
           <AdminHeader />
