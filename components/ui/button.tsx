@@ -39,7 +39,6 @@ const buttonVariants = cva(
 );
 
 function Button({
-  onClick,
   className,
   variant = "default",
   size = "default",
