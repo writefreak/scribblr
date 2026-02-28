@@ -25,7 +25,7 @@ const CategoryCards = () => {
           return (
             <Card
               key={index}
-              className={`px-4 py-2 ${isLast ? "md:grid hidden" : ""}`}
+              className={`px-4 py-2 dark:bg-transparent  ${isLast ? "md:grid hidden" : ""}`}
             >
               <div>
                 <div className="h-7 w-7 bg-blue-600/30 rounded-full flex items-center justify-center">

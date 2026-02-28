@@ -80,7 +80,7 @@ export function RecentActivity() {
   const prev = () => setCurrentPage((p) => Math.max(p - 1, 0));
 
   return (
-    <Card className="px-3 pb-3">
+    <Card className="px-3 pb-3 dark:bg-transparent ">
       {/* <CardHeader className="p-0 font-space-grotesk font-medium">
         Recent Activities
       </CardHeader> */}

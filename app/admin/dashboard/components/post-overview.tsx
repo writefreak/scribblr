@@ -39,7 +39,7 @@ const recentPosts = [
 
 export function PostOverview() {
   return (
-    <Card className="px-3 overflow-x-hidden md:overflow-visible">
+    <Card className="px-3 dark:bg-transparent  overflow-x-hidden md:overflow-visible">
       <div className="w-full">
         <Table className="w-full table-fixed">
           <TableHeader>

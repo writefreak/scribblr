@@ -94,7 +94,7 @@ const ApproveComment = () => {
               <Card
                 data-aos="zoom-in"
                 key={t.id}
-                className="p-5 py-9 md:py-8  rounded-md shrink-0 w-[85%] snap-start md:w-auto flex flex-col justify-between"
+                className="p-5 py-9 md:py-8 dark:bg-transparent  rounded-md shrink-0 w-[85%] snap-start md:w-auto flex flex-col justify-between"
               >
                 <div>
                   <p className="font-inter text-[12.6px] font-montserrat not-dark:text-black/80">

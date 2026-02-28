@@ -39,7 +39,7 @@ export function CatWrapper() {
               key={index}
               onClick={() => handleCardClick(index)}
               // Mobile: Fixed h-28 | Desktop: h-28 expanding to h-44
-              className={`p-4 cursor-pointer transition-all duration-300 ease-in-out overflow-hidden relative h-28 ${
+              className={`p-4 cursor-pointer dark:bg-transparent  transition-all duration-300 ease-in-out overflow-hidden relative h-28 ${
                 isActive
                   ? "ring-2 ring-blue-600/30 shadow-md md:h-44"
                   : "hover:bg-gray-50/5"
@@ -96,7 +96,7 @@ export function CatWrapper() {
         })}
       </div>
 
-      <Card className="flex items-center justify-center gap-3 p-4 ">
+      <Card className="flex dark:bg-transparent  items-center justify-center gap-3 p-4 ">
         <div className="h-7 w-7 bg-blue-600/30 rounded-full flex items-center justify-center">
           <Plus
             className="not-dark:text-blue-600 text-blue-400"

@@ -154,7 +154,7 @@ export function ChartAnalytics() {
   });
 
   return (
-    <Card className="pt-0">
+    <Card className="pt-0 dark:bg-transparent ">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 font-space-grotesk">
           <CardTitle>Area Chart - Interactive</CardTitle>
