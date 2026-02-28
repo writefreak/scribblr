@@ -20,7 +20,15 @@ export function CatWrapper() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-7">
+      <div>
+        <h2 className="md:text-2xl text-xl font-bold tracking-tight font-space-grotesk flex items-center gap-3">
+          Categories
+        </h2>
+        <p className="text-muted-foreground text-xs md:text-sm font-montserrat">
+          View and add new blog categories
+        </p>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-2 gap-3">
         {cat.map((c, index) => {
           const Icon = c.icon;

@@ -150,3 +150,13 @@
 ::-webkit-scrollbar-thumb {
   background-color: #377389;
 }
+
+/* globals.css */
+.ql-container {
+  min-height: 300px;
+  font-size: 16px; /* Also a good time to fix mobile zoom issues */
+}
+
+.ql-editor {
+  min-height: 300px;
+}

@@ -1,10 +1,13 @@
+"use client";
 import { BellDot } from "lucide-react";
 import React from "react";
 import { Button } from "../ui/button";
 import { ThemeSwitch } from "../ui/theme/theme-switch";
 import { Card } from "../ui/card";
+import { useRouter } from "next/navigation";
 
 const AdminHeader = () => {
+  const router = useRouter();
   return (
     <Card className="py-3 px-4 border rounded-md">
       <div className="flex items-center justify-between">
@@ -24,9 +27,12 @@ const AdminHeader = () => {
               className="h-full w-full rounded-full object-cover"
             />
           </div>
-          <Button className="bg-[#377389] hover:bg-[#377389]/40 h-7 w-7 rounded-full flex items-center justify-center">
+          <button
+            onClick={() => router.push("/admin/notifications")}
+            className="bg-[#377389] hover:bg-[#377389]/40 h-7 w-7 rounded-full flex items-center justify-center"
+          >
             <BellDot height={15} width={15} strokeWidth={1.5} color="white" />
-          </Button>
+          </button>
           <ThemeSwitch
             className="h-7 w-7
           "

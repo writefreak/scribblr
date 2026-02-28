@@ -44,20 +44,19 @@ export function BurgerMenu({ className }: props) {
           <Menu height={30} width={30} className="md:hidden  text-white" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="pt-8">
-        {/* <div className="border-b-2">
-          <UserProfile />
-        </div> */}
+      <SheetContent
+        side="top"
+        className="pt-8 dark:bg-black/60 backdrop-blur-xl"
+      >
         <SheetTitle></SheetTitle>
 
         <div className="p-4 flex flex-col gap-6">
-          {/* <div className="flex flex-col gap-3 pb-5 border-b-2">
-            <p className="text-xl">Theme</p>
-            <MobileTheme />
-          </div> */}
           <div className="pb-1"></div>
           {links.map((l) => (
-            <div key={l.id} className="flex items-center gap-2 pb-4">
+            <div
+              key={l.id}
+              className={`flex items-center gap-2 pb-4 border-b last:border-0`}
+            >
               <div>{l.icon}</div>
               <Link key={l.id} href={l.url} className="text-sm font-semibold">
                 {l.desc}
