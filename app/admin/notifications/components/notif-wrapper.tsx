@@ -81,8 +81,8 @@ export default function NotifWrapper() {
           <h2 className="md:text-2xl text-xl font-bold tracking-tight font-space-grotesk flex items-center gap-3">
             Notifications
             {unreadCount > 0 && (
-              <span className="bg-[#377389] text-white text-xs px-2 py-1 rounded-full">
-                {unreadCount} new
+              <span className="bg-[#377389] text-white text-xs h-6 w-6 flex items-center justify-center rounded-full">
+                {unreadCount}
               </span>
             )}
           </h2>

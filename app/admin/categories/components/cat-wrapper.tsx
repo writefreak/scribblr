@@ -10,10 +10,14 @@ import {
   Star,
   Telescope,
   Trash2,
+  X, // Added for the close button
 } from "lucide-react";
+import CatInput from "./cat-input";
 
 export function CatWrapper() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isAddOpen, setIsAddOpen] = useState(false);
+  const [newCategory, setNewCategory] = useState("");
 
   const handleCardClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -38,15 +42,12 @@ export function CatWrapper() {
             <Card
               key={index}
               onClick={() => handleCardClick(index)}
-              // Mobile: Fixed h-28 | Desktop: h-28 expanding to h-44
-              className={`p-4 cursor-pointer dark:bg-transparent  transition-all duration-300 ease-in-out overflow-hidden relative h-28 ${
+              className={`p-4 cursor-pointer dark:bg-transparent transition-all duration-300 ease-in-out overflow-hidden relative h-28 ${
                 isActive
                   ? "ring-2 ring-blue-600/30 shadow-md md:h-44"
                   : "hover:bg-gray-50/5"
               }`}
             >
-              {/* --- INFO LAYER --- */}
-              {/* On mobile: Disappears when active. On desktop: Always visible. */}
               <div
                 className={`flex flex-col gap-5 text-lg font-raleway text-white transition-opacity duration-300 ${
                   isActive
@@ -66,8 +67,6 @@ export function CatWrapper() {
                 </div>
               </div>
 
-              {/* --- BUTTONS LAYER --- */}
-              {/* On mobile: Centers vertically/horizontally when active. On desktop: Slides in below. */}
               <div
                 className={`transition-all duration-300 ease-in-out ${
                   isActive
@@ -96,7 +95,11 @@ export function CatWrapper() {
         })}
       </div>
 
-      <Card className="flex dark:bg-transparent  items-center justify-center gap-3 p-4 ">
+      {/* --- ADD CATEGORY TRIGGER --- */}
+      <Card
+        onClick={() => setIsAddOpen(true)}
+        className="flex dark:bg-transparent items-center justify-center gap-3 p-4 cursor-pointer hover:bg-gray-50/5 transition-colors border-dashed border-2 border-zinc-200 dark:border-zinc-800"
+      >
         <div className="h-7 w-7 bg-blue-600/30 rounded-full flex items-center justify-center">
           <Plus
             className="not-dark:text-blue-600 text-blue-400"
@@ -106,6 +109,25 @@ export function CatWrapper() {
         </div>
         <span className="font-space-grotesk">Add Category</span>
       </Card>
+
+      {/* --- ADD CATEGORY OVERLAY --- */}
+      {isAddOpen && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+            onClick={() => setIsAddOpen(false)}
+          />
+          <div className="relative bg-white dark:bg-zinc-950 w-full max-w-sm rounded-[32px] p-8 shadow-2xl border border-zinc-100 dark:border-zinc-800 animate-in zoom-in-95 duration-200">
+            <button
+              onClick={() => setIsAddOpen(false)}
+              className="absolute right-6 top-6 text-zinc-400 hover:text-zinc-600"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <CatInput />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

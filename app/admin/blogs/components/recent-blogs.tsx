@@ -14,9 +14,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import SearchBar from "@/components/ui/search";
+import { ConfirmDialog } from "@/components/ui/dialog";
+// IMPORT THE COMPONENT HERE
 
-// --- MOCK DATA ---
-const RECENT_POSTS = [
+const INITIAL_POSTS = [
   {
     id: 1,
     title: "University Students Protest Sudden Tuition Increase",
@@ -84,18 +85,25 @@ const RECENT_POSTS = [
 ];
 
 export default function RecentBlogsPage() {
+  const [posts, setPosts] = useState(INITIAL_POSTS);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayLimit, setDisplayLimit] = useState(6);
+
+  // MODAL STATE
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<{
+    id: number;
+    title: string;
+  } | null>(null);
+
   const router = useRouter();
 
-  // 1. Filter logic
-  const filteredPosts = RECENT_POSTS.filter(
+  const filteredPosts = posts.filter(
     (p) =>
       p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.category.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  // 2. Pagination/Limit logic
   const visiblePosts = filteredPosts.slice(0, displayLimit);
   const isExpanded = displayLimit >= filteredPosts.length;
   const hasMore = filteredPosts.length > 6;
@@ -109,15 +117,39 @@ export default function RecentBlogsPage() {
     }
   };
 
+  // HANDLERS
+  const openDeleteModal = (post: any) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (selectedPost) {
+      setPosts(posts.filter((p) => p.id !== selectedPost.id));
+      setIsModalOpen(false);
+      setSelectedPost(null);
+    }
+  };
+
   return (
     <div className="w-full space-y-6 pb-20">
+      {/* 2. USE THE IMPORTED COMPONENT */}
+      <ConfirmDialog
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Blog Post?"
+        message={`Are you sure you want to delete "${selectedPost?.title}"? This cannot be undone.`}
+        type="danger"
+      />
+
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-7">
         <div>
           <h2 className="md:text-2xl text-xl font-bold tracking-tight font-space-grotesk">
             Recent Blogs
           </h2>
           <p className="text-muted-foreground text-xs md:text-sm font-montserrat">
-            Manage and track the performance of your latest stories.
+            Manage and track your latest stories.
           </p>
         </div>
 
@@ -125,15 +157,14 @@ export default function RecentBlogsPage() {
           <SearchBar
             onSearch={(term) => {
               setSearchTerm(term);
-              setDisplayLimit(6); // Reset limit on search to avoid empty views
+              setDisplayLimit(6);
             }}
           />
           <Button
             onClick={() => router.push("/admin/blogs/new-blog")}
-            className="bg-[#377389] hover:bg-[#2c5d6f] text-white shrink-0 shadow-sm"
+            className="bg-[#377389] hover:bg-[#2c5d6f] text-white"
           >
-            Add New
-            <Plus strokeWidth={1.5} className="w-3.5 h-3.5" />
+            Add New <Plus strokeWidth={1.5} className="w-3.5 h-3.5" />
           </Button>
         </div>
       </div>
@@ -142,7 +173,7 @@ export default function RecentBlogsPage() {
         {visiblePosts.map((post) => (
           <div
             key={post.id}
-            className="group flex flex-col justify-between p-5 border rounded-xl not-dark:bg-white  shadow-sm hover:shadow-md hover:border-[#377389]/40 transition-all duration-300"
+            className="group flex flex-col justify-between p-5 border rounded-xl not-dark:bg-white  shadow-sm hover:border-[#377389]/40 transition-all"
           >
             <div className="space-y-3">
               <div className="flex justify-between items-start gap-4">
@@ -155,80 +186,51 @@ export default function RecentBlogsPage() {
                 >
                   {post.status}
                 </span>
-                <span className="text-[11px] font-medium text-gray-400 flex items-center gap-1 font-montserrat">
-                  <Eye strokeWidth={1.5} className="w-3.5 h-3.5" /> {post.views}
+                <span className="text-[11px] text-gray-400 flex items-center gap-1">
+                  <Eye className="w-3.5 h-3.5" /> {post.views}
                 </span>
               </div>
-
-              <h3 className="font-bold font-space-grotesk text-sm md:text-base text-zinc-900 dark:text-zinc-100 line-clamp-2 leading-snug group-hover:text-[#377389] transition-colors">
+              <h3 className="font-bold font-space-grotesk text-sm md:text-base line-clamp-2">
                 {post.title}
               </h3>
-
-              <div className="flex items-center gap-3 font-montserrat text-[11px] text-gray-500">
+              <div className="flex items-center gap-3 text-[11px] text-gray-500 font-montserrat">
                 <span className="flex items-center gap-1.5">
-                  <Calendar strokeWidth={1.5} className="w-3.5 h-3.5" />{" "}
-                  {post.date}
+                  <Calendar className="w-3.5 h-3.5" /> {post.date}
                 </span>
-                <span className="flex items-center gap-1.5 capitalize">
-                  <Tag className="w-3.5 h-3.5" strokeWidth={1.5} />{" "}
-                  {post.category}
+                <span className="flex items-center gap-1.5">
+                  <Tag className="w-3.5 h-3.5" /> {post.category}
                 </span>
               </div>
             </div>
 
-            {/* --- ACTION FOOTER --- */}
-            <div className="flex items-center justify-end gap-2 mt-6 pt-4 border-t border-gray-100 dark:border-zinc-900">
-              <button
-                title="Preview"
-                className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full text-zinc-500 transition-colors border border-transparent hover:border-zinc-200"
-              >
-                <ExternalLink strokeWidth={1.5} className="w-4 h-4" />
+            <div className="flex items-center justify-end gap-2 mt-6 pt-4 border-t dark:border-zinc-900">
+              <button className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full text-zinc-500">
+                <ExternalLink className="w-4 h-4" />
               </button>
-              <button
-                title="Edit"
-                className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full text-zinc-500 transition-colors border border-transparent hover:border-zinc-200"
-              >
-                <Pencil strokeWidth={1.5} className="w-4 h-4" />
+              <button className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full text-zinc-500">
+                <Pencil className="w-4 h-4" />
               </button>
+
+              {/* 3. TRIGGER THE MODAL */}
               <button
-                title="Delete"
-                className="p-2 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full text-red-600 transition-colors border border-transparent hover:border-red-100"
+                onClick={() => openDeleteModal(post)}
+                className="p-2 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full text-red-600"
               >
-                <Trash2 strokeWidth={1.5} className="w-4 h-4" />
+                <Trash2 className="w-4 h-4" />
               </button>
             </div>
           </div>
         ))}
-
-        {/* --- EMPTY STATE --- */}
-        {filteredPosts.length === 0 && (
-          <div className="col-span-full py-24 text-center border-2 border-dashed rounded-2xl bg-gray-50/50 dark:bg-zinc-900/20">
-            <p className="text-gray-500 font-montserrat italic">
-              No blogs found matching "{searchTerm}"
-            </p>
-          </div>
-        )}
       </div>
 
-      {/* --- SEE MORE / LESS TOGGLE --- */}
-      {hasMore && filteredPosts.length > 0 && (
+      {hasMore && (
         <div className="flex justify-center pt-8">
           <Button
             variant="outline"
             onClick={toggleDisplay}
-            className="group flex items-center gap-2 px-13 py-3 border border-[#377389] text-[#377389] hover:bg-[#377389] hover:text-white transition-all duration-300 rounded-full font-montserrat font-bold text-sm shadow-md active:scale-95"
+            className="rounded-full border-[#377389] text-[#377389] px-10"
           >
-            {isExpanded ? (
-              <>
-                Show Less{" "}
-                <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
-              </>
-            ) : (
-              <>
-                See More{" "}
-                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-              </>
-            )}
+            {isExpanded ? "Show Less" : "See More"}
           </Button>
         </div>
       )}
